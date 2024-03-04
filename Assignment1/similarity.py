@@ -31,12 +31,16 @@ for key in docs:
     counts[key] = []
     doc = docs[key]
     for term in terms:
-        counts[key].append(doc.count(term))
+        c = 0
+        for word in doc.split():
+            if word.replace(",","") == term:
+                c+=1
+        counts[key].append(c)
 
 #counts would be
 """
 'doc1': [1, 1, 1, 0, 0, 0, 0, 0]
-'doc2': [1, 1, 1, 1, 1, 0, 0, 0]
+'doc2': [1, 1, 0, 1, 1, 0, 0, 0]
 'doc3': [1, 0, 0, 0, 0, 1, 1, 1]
 'doc4': [1, 1, 1, 1, 0, 0, 1, 1]        
 """
