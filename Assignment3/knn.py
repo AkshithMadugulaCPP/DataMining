@@ -18,11 +18,11 @@ def discretize(instance):
     try:
         prev=-100
         for c in classes:
-            if instance["Temperature (C)"] > prev and instance["Temperature (C)"] <= c:
+            if prev < instance["Temperature (C)"] <= c:
                 instance["Temperature (C)"] = c
             prev = c
     except:
-        print("instance failed to discretize", instance)
+        print("unable to discretize", instance)
     return instance
 
 #defining the hyperparameter values of KNN
