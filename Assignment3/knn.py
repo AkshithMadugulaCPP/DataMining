@@ -21,6 +21,8 @@ def discretize(instance):
             if prev < instance["Temperature (C)"] <= c:
                 instance["Temperature (C)"] = c
             prev = c
+        if instance["Temperature (C)"] > c:
+            instance["Temperature (C)"] = c
     except:
         print("unable to discretize", instance)
     return instance
@@ -80,8 +82,3 @@ for k in k_values:
             if highest_accuracy < current_accuracy:
                 highest_accuracy = current_accuracy
                 print(f"Highest KNN accuracy so far: {current_accuracy}, Parameters: k={k}, p={p}, w= '{w}'")
-
-
-
-
-

@@ -26,6 +26,8 @@ def discretize(instance):
             if prev < instance["Temperature (C)"] <= c:
                 instance["Temperature (C)"] = c
             prev = c
+        if instance["Temperature (C)"] > c:
+            instance["Temperature (C)"] = c
     except:
         print("instance failed to discretize", instance)
     return instance
@@ -65,6 +67,3 @@ for test_x , test_y in zip(X_test,y_test):
 #print the naive_bayes accuracyy
 accuracy = accurates/len(y_test)
 print("naive_bayes accuracy: " + str(accuracy))
-
-
-
